@@ -1,207 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>ArchSage – Arch Linux Assistant</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="description" content="ArchSage: a precise Arch Linux assistant powered by Arch Wiki, GNU manuals, and curated PDFs." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArchSage – Linux Assistant</title>
   <style>
-    :root{
-      --bg:#0b0f16;--panel:#111827;--fg:#e5e7eb;--muted:#9ca3af;--border:#1f2937;--link:#93c5fd;--pill:#0e1624
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0d1117;
+      color: #e6edf3;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;line-height:1.6}
-    a{color:var(--link);text-decoration:underline}
-    .wrap{max-width:1000px;margin:0 auto;padding:1.25rem 1rem 4rem}
-    header{display:flex;align-items:center;gap:1rem;margin:0 0 1rem}
-    nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:.25rem 0 1rem}
-    nav a{display:inline-block;background:var(--pill);border:1px solid var(--border);padding:.4rem .6rem;border-radius:999px;text-decoration:none}
-    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;margin:1rem 0}
-    h1{font-size:clamp(1.75rem,2.5vw,2.25rem);margin:.1rem 0}
-    h2{font-size:1.15rem;margin:0 0 .5rem}
-    h3{font-size:1rem;margin:.5rem 0 .25rem;color:var(--muted)}
-    ul{margin:.4rem 0 .8rem 1.1rem}
-    code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-    .glow{box-shadow:0 0 0 1px rgba(147,197,253,.08),0 8px 28px rgba(147,197,253,.06) inset;border-radius:12px}
-    .logo{width:60px;height:60px;flex:0 0 60px}
-    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
-    .grid{display:grid;gap:1rem}
-    @media(min-width:880px){.grid{grid-template-columns:1fr 1fr}}
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    h1 {
+      margin: 1rem 0 0.5rem;
+      font-size: 2rem;
+    }
+    h2 {
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 0.25rem;
+      margin-top: 2rem;
+      font-size: 1.4rem;
+    }
+    p {
+      max-width: 800px;
+      margin: 0.5rem auto;
+      text-align: center;
+    }
+    .card {
+      max-width: 800px;
+      background: #161b22;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+    }
+    ul {
+      padding-left: 1.25rem;
+    }
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+      color: #8b949e;
+    }
   </style>
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml"
-    href='data:image/svg+xml;utf8,
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-      <defs>
-        <radialGradient id="bg" cx="50%" cy="45%" r="60%">
-          <stop offset="0%" stop-color="#1b2332"/><stop offset="100%" stop-color="#0e1420"/>
-        </radialGradient>
-        <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#9aefff"/><stop offset="100%" stop-color="#25b7d6"/>
-        </linearGradient>
-      </defs>
-      <circle cx="64" cy="64" r="60" fill="url(#bg)"/>
-      <path d="M64 16 L108 104 H20 Z" fill="none" stroke="url(#edge)" stroke-width="7"/>
-      <path d="M48 84 L64 70 L80 84" fill="none" stroke="url(#edge)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>' />
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <!-- Inline SVG logo -->
-      <div class="logo glow" aria-hidden="true">
-        <svg width="60" height="60" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ArchSage logo">
-          <defs>
-            <radialGradient id="bg" cx="50%" cy="45%" r="60%">
-              <stop offset="0%" stop-color="#1b2332"/><stop offset="100%" stop-color="#0e1420"/>
-            </radialGradient>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2.8" result="blur"/>
-              <feFlood flood-color="#6be6ff" flood-opacity="0.45"/>
-              <feComposite in2="blur" operator="in"/>
-              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="innershadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feOffset dy="1"/><feGaussianBlur stdDeviation="1.2" result="offblur"/>
-              <feComposite in="SourceGraphic" in2="offblur" operator="arithmetic" k2="-1" k3="1"/>
-            </filter>
-            <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#9aefff"/><stop offset="100%" stop-color="#25b7d6"/>
-            </linearGradient>
-          </defs>
-          <circle cx="64" cy="64" r="60" fill="url(#bg)"/>
-          <path d="M64 16 L108 104 H20 Z" fill="none" stroke="url(#edge)" stroke-width="4.5" filter="url(#glow)"/>
-          <path d="M64 28 L96 92 H32 Z" fill="#101a28" filter="url(#innershadow)"/>
-          <path d="M48 84 L64 70 L80 84" fill="none" stroke="url(#edge)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
-        </svg>
-      </div>
-      <div>
-        <h1>ArchSage</h1>
-        <div class="muted">Your precise Arch Linux assistant — install, configure, troubleshoot.</div>
-      </div>
-    </header>
+  <header>
+    <img src="logo.png" alt="ArchSage Logo" />
+    <h1>ArchSage</h1>
+    <p>Your Arch Linux specialist and technical guide.</p>
+  </header>
 
-    <nav>
-      <a href="#about">About</a>
-      <a href="#how">How to Use</a>
-      <a href="#examples">Example Prompts</a>
-      <a href="#included">Included PDFs</a>
-      <a href="#extras">Extra PDFs</a>
-      <a href="#actions">Actions & APIs</a>
-      <a href="#privacy">Privacy Policy</a>
-    </nav>
-
-    <section id="about" class="card">
+  <main>
+    <section class="card">
       <h2>About ArchSage</h2>
       <p>
-        ArchSage is an Arch Linux specialist that gives step-by-step help for installs, drivers, kernels,
-        systemd, networking, and daily workflows. It’s grounded in the Arch Wiki, GNU manuals, and curated PDFs
-        so answers are practical, accurate, and reproducible.
+        ArchSage is a custom GPT trained to help with Arch Linux installation, 
+        maintenance, troubleshooting, and deeper Linux learning. It uses a curated 
+        set of reference PDFs and trusted APIs to give you precise, step-by-step guidance. 
       </p>
-      <p class="muted">Every command is explained. Risky operations are flagged. If something’s uncertain, ArchSage shows how to verify it.</p>
-    </section>
-
-    <section id="how" class="card">
-      <h2>How to Use</h2>
-      <div class="grid">
-        <div>
-          <h3>Packages</h3>
-          <ul>
-            <li>Checks official repos first, then AUR.</li>
-            <li>Returns name, version, repo/arch (or AUR maintainer/updated), plus the install command (<span class="mono">pacman -S</span> or <span class="mono">yay -S</span>).</li>
-          </ul>
-          <h3>Kernel & ISO</h3>
-          <ul>
-            <li>Reports latest stable + latest LTS kernels.</li>
-            <li>Fetches the latest Arch ISO link and SHA256 checksum from the geo mirror.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Style</h3>
-          <ul>
-            <li>Short, numbered steps; commands in code blocks.</li>
-            <li>Warnings before destructive actions (<span class="mono">rm -rf</span>, partitioning, wiping configs).</li>
-            <li>Verification paths: <span class="mono">pacman -Ss</span>, <span class="mono">man</span>, Arch Wiki links.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="examples" class="card">
-      <h2>Example Prompts</h2>
-      <ul>
-        <li>“Search official repos for <span class="mono">hyprland</span> and show install command.”</li>
-        <li>“Is <span class="mono">proton-ge-custom</span> in the AUR? Who maintains it and when was it updated?”</li>
-        <li>“List latest stable and LTS kernel versions and why I’d choose each.”</li>
-        <li>“Fresh install on NVMe with systemd-boot: walk me through partitioning and fstab.”</li>
-        <li>“NVIDIA 3090 tear-free Wayland on Hyprland — exact steps and configs.”</li>
-      </ul>
     </section>
 
     <section id="included" class="card">
       <h2>Included PDFs (Knowledge Base)</h2>
       <ul>
-        <li><a href="#" target="_blank" rel="noopener">The Linux Command Line (TLCL-24.11.pdf)</a></li>
-        <li><a href="#" target="_blank" rel="noopener">Installation guide – ArchWiki.pdf</a></li>
-        <li><a href="#" target="_blank" rel="noopener">Pacman – ArchWiki.pdf</a></li>
-        <li><a href="#" target="_blank" rel="noopener">Systemd – ArchWiki.pdf</a></li>
-        <li><a href="#" target="_blank" rel="noopener">Network configuration – ArchWiki.pdf</a></li>
-        <li><a href="#" target="_blank" rel="noopener">Users and groups – ArchWiki.pdf</a></li>
-        <li><a href="#" target="_blank" rel="noopener">Hyprland – ArchWiki.pdf</a></li>
+        <li><a href="pdfs/TLCL-24.11.pdf" target="_blank" rel="noopener">The Linux Command Line (TLCL-24.11)</a></li>
+        <li><a href="pdfs/Installation guide - ArchWiki.pdf" target="_blank" rel="noopener">Installation guide – ArchWiki</a></li>
+        <li><a href="pdfs/pacman - ArchWiki.pdf" target="_blank" rel="noopener">Pacman – ArchWiki</a></li>
+        <li><a href="pdfs/systemd - ArchWiki.pdf" target="_blank" rel="noopener">Systemd – ArchWiki</a></li>
+        <li><a href="pdfs/Network configuration - ArchWiki.pdf" target="_blank" rel="noopener">Network configuration – ArchWiki</a></li>
+        <li><a href="pdfs/Users and groups - ArchWiki.pdf" target="_blank" rel="noopener">Users and groups – ArchWiki</a></li>
+        <li><a href="pdfs/Hyprland - ArchWiki.pdf" target="_blank" rel="noopener">Hyprland – ArchWiki</a></li>
       </ul>
     </section>
 
-<section id="included" class="card">
-  <h2>Included PDFs (Knowledge Base)</h2>
-  <ul>
-    <li><a href="pdfs/TLCL-24.11.pdf" target="_blank" rel="noopener">The Linux Command Line (TLCL-24.11.pdf)</a></li>
-    <li><a href="pdfs/Installation guide - ArchWiki.pdf" target="_blank" rel="noopener">Installation guide – ArchWiki.pdf</a></li>
-    <li><a href="pdfs/pacman - ArchWiki.pdf" target="_blank" rel="noopener">Pacman – ArchWiki.pdf</a></li>
-    <li><a href="pdfs/systemd - ArchWiki.pdf" target="_blank" rel="noopener">Systemd – ArchWiki.pdf</a></li>
-    <li><a href="pdfs/Network configuration - ArchWiki.pdf" target="_blank" rel="noopener">Network configuration – ArchWiki.pdf</a></li>
-    <li><a href="pdfs/Users and groups - ArchWiki.pdf" target="_blank" rel="noopener">Users and groups – ArchWiki.pdf</a></li>
-    <li><a href="pdfs/Hyprland - ArchWiki.pdf" target="_blank" rel="noopener">Hyprland – ArchWiki.pdf</a></li>
-  </ul>
-</section>
-
-
-    <section id="actions" class="card">
-      <h2>Actions & APIs</h2>
-      <h3>Official repos (archlinux.org)</h3>
-      <ul class="mono">
-        <li>GET /packages/search/json/?name=&lt;term&gt; [&repo,&arch]</li>
-        <li>GET /packages/{repo}/{arch}/{pkgname}/json/</li>
+    <section id="extras" class="card">
+      <h2>Extra PDFs (Optional, Recommended)</h2>
+      <ul>
+        <li><a href="pdfs/GNUcoreutils.pdf" target="_blank" rel="noopener">GNU Coreutils Manual</a></li>
+        <li><a href="pdfs/GNU-make.pdf" target="_blank" rel="noopener">GNU Make Manual</a></li>
+        <li><a href="pdfs/bash-ref.pdf" target="_blank" rel="noopener">Bash Reference Manual</a></li>
+        <li><a href="pdfs/File-System.pdf" target="_blank" rel="noopener">Filesystem Hierarchy Standard v3.0</a></li>
+        <li><a href="pdfs/GNU-Linux-man-pages-6.8.pdf" target="_blank" rel="noopener">Linux Man-Pages Book 6.8</a></li>
+        <li><a href="pdfs/LFS-BOOK-12.1.pdf" target="_blank" rel="noopener">Linux From Scratch 12.1</a></li>
       </ul>
-      <h3>AUR (aur.archlinux.org, RPC v5)</h3>
-      <ul class="mono">
-        <li>GET /rpc/?v=5&amp;type=search&amp;arg=&lt;term&gt;</li>
-        <li>GET /rpc/?v=5&amp;type=info&amp;arg[]=&lt;pkgname&gt;</li>
-        <li>GET /rpc/?v=5&amp;type=multiinfo&amp;arg[]=&lt;pkg1&gt;&amp;arg[]=&lt;pkg2&gt;…</li>
-      </ul>
-      <h3>Kernel (www.kernel.org)</h3>
-      <ul class="mono">
-        <li>GET /releases.json</li>
-      </ul>
-      <p class="muted">All endpoints are public/read-only; no API keys.</p>
     </section>
+  </main>
 
-    <section id="privacy" class="card">
-      <h2>Privacy Policy</h2>
-      <p>See the dedicated policy page for details on endpoints, data sent, storage, and security.</p>
-      <p><strong><a id="ppLink" href="#" target="_blank" rel="noopener">Open the Privacy Policy</a></strong></p>
-    </section>
-
-    <footer>
-      <div>© <span id="year">2025</span> ArchSage — Built for the Arch community.</div>
-    </footer>
-  </div>
-
-  <script>
-    // TODO: set your PP URL here
-    const PRIVACY_POLICY_URL = "https://420shaggy420.github.io/archcraft-gpt-privacy/";
-    document.getElementById("ppLink").href = PRIVACY_POLICY_URL;
-    document.getElementById("year").textContent = String(new Date().getFullYear());
-  </script>
+  <footer>
+    <p>
+      <a href="https://420shaggy420.github.io/archcraft-gpt-privacy/" target="_blank" rel="noopener">Privacy Policy</a> · 
+      ArchSage © 2025
+    </p>
+  </footer>
 </body>
 </html>
