@@ -1,0 +1,22 @@
+{
+  "files": [
+    "File-System.pdf",
+    "GNU-Linux-man-pages-6.8.pdf",
+    "GNU-make.pdf",
+    "GNUcoreutils.pdf",
+    "General troubleshooting - ArchWiki.pdf",
+    "Hyprland - ArchWiki.pdf",
+    "Installation guide - ArchWiki.pdf",
+    "LFS-BOOK-12.1.pdf",
+    "NVIDIA - ArchWiki.pdf",
+    "Network configuration - ArchWiki.pdf",
+    "Shells-Utilities.pdf",
+    "TLCL-24.11.pdf",
+    "Users and groups - ArchWiki.pdf",
+    "Wayland - ArchWiki.pdf",
+    "Xorg - ArchWiki.pdf",
+    "bash-ref.pdf",
+    "pacman - ArchWiki.pdf",
+    "systemd - ArchWiki.pdf"
+  ]
+}
