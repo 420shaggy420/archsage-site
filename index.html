@@ -2,49 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ArchSage – Linux Assistant</title>
+  <title>ArchSage – Knowledge Base</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #0d1117;
       color: #e6edf3;
       margin: 0;
-      padding: 0;
+      padding: 2rem;
       line-height: 1.6;
     }
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #161b22;
-      border-bottom: 1px solid #30363d;
-    }
-    header img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-    }
-    h1 {
-      margin: 1rem 0 0.5rem;
-      font-size: 2rem;
-    }
-    h2 {
-      border-bottom: 1px solid #30363d;
-      padding-bottom: 0.25rem;
-      margin-top: 2rem;
-      font-size: 1.4rem;
-    }
-    p {
-      max-width: 800px;
-      margin: 0.5rem auto;
-      text-align: center;
+    h1, h2 {
+      color: #58a6ff;
     }
     .card {
-      max-width: 800px;
       background: #161b22;
-      margin: 2rem auto;
-      padding: 1.5rem;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem auto;
       border-radius: 8px;
+      max-width: 800px;
       border: 1px solid #30363d;
     }
     ul {
@@ -57,62 +33,34 @@
     a:hover {
       text-decoration: underline;
     }
-    footer {
-      text-align: center;
-      margin: 2rem 0;
-      font-size: 0.9rem;
-      color: #8b949e;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="ArchSage Logo" />
-    <h1>ArchSage</h1>
-    <p>Your Arch Linux specialist and technical guide.</p>
-  </header>
+  <h1>ArchSage Knowledge Base</h1>
 
-  <main>
-    <section class="card">
-      <h2>About ArchSage</h2>
-      <p>
-        ArchSage is a custom GPT trained to help with Arch Linux installation, 
-        maintenance, troubleshooting, and deeper Linux learning. It uses a curated 
-        set of reference PDFs and trusted APIs to give you precise, step-by-step guidance. 
-      </p>
-    </section>
+  <section id="included" class="card">
+    <h2>Included PDFs (Knowledge Base)</h2>
+    <ul>
+      <li><a href="pdfs/TLCL-24.11.pdf" target="_blank" rel="noopener">The Linux Command Line (TLCL-24.11.pdf)</a></li>
+      <li><a href="pdfs/Installation guide - ArchWiki.pdf" target="_blank" rel="noopener">Installation guide – ArchWiki.pdf</a></li>
+      <li><a href="pdfs/pacman - ArchWiki.pdf" target="_blank" rel="noopener">Pacman – ArchWiki.pdf</a></li>
+      <li><a href="pdfs/systemd - ArchWiki.pdf" target="_blank" rel="noopener">Systemd – ArchWiki.pdf</a></li>
+      <li><a href="pdfs/Network configuration - ArchWiki.pdf" target="_blank" rel="noopener">Network configuration – ArchWiki.pdf</a></li>
+      <li><a href="pdfs/Users and groups - ArchWiki.pdf" target="_blank" rel="noopener">Users and groups – ArchWiki.pdf</a></li>
+      <li><a href="pdfs/Hyprland - ArchWiki.pdf" target="_blank" rel="noopener">Hyprland – ArchWiki.pdf</a></li>
+    </ul>
+  </section>
 
-    <section id="included" class="card">
-      <h2>Included PDFs (Knowledge Base)</h2>
-      <ul>
-        <li><a href="pdfs/TLCL-24.11.pdf" target="_blank" rel="noopener">The Linux Command Line (TLCL-24.11)</a></li>
-        <li><a href="pdfs/Installation guide - ArchWiki.pdf" target="_blank" rel="noopener">Installation guide – ArchWiki</a></li>
-        <li><a href="pdfs/pacman - ArchWiki.pdf" target="_blank" rel="noopener">Pacman – ArchWiki</a></li>
-        <li><a href="pdfs/systemd - ArchWiki.pdf" target="_blank" rel="noopener">Systemd – ArchWiki</a></li>
-        <li><a href="pdfs/Network configuration - ArchWiki.pdf" target="_blank" rel="noopener">Network configuration – ArchWiki</a></li>
-        <li><a href="pdfs/Users and groups - ArchWiki.pdf" target="_blank" rel="noopener">Users and groups – ArchWiki</a></li>
-        <li><a href="pdfs/Hyprland - ArchWiki.pdf" target="_blank" rel="noopener">Hyprland – ArchWiki</a></li>
-      </ul>
-    </section>
-
-    <section id="extras" class="card">
-      <h2>Extra PDFs (Optional, Recommended)</h2>
-      <ul>
-        <li><a href="pdfs/GNUcoreutils.pdf" target="_blank" rel="noopener">GNU Coreutils Manual</a></li>
-        <li><a href="pdfs/GNU-make.pdf" target="_blank" rel="noopener">GNU Make Manual</a></li>
-        <li><a href="pdfs/bash-ref.pdf" target="_blank" rel="noopener">Bash Reference Manual</a></li>
-        <li><a href="pdfs/File-System.pdf" target="_blank" rel="noopener">Filesystem Hierarchy Standard v3.0</a></li>
-        <li><a href="pdfs/GNU-Linux-man-pages-6.8.pdf" target="_blank" rel="noopener">Linux Man-Pages Book 6.8</a></li>
-        <li><a href="pdfs/LFS-BOOK-12.1.pdf" target="_blank" rel="noopener">Linux From Scratch 12.1</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>
-      <a href="https://420shaggy420.github.io/archcraft-gpt-privacy/" target="_blank" rel="noopener">Privacy Policy</a> · 
-      ArchSage © 2025
-    </p>
-  </footer>
+  <section id="extras" class="card">
+    <h2>Extra PDFs (Optional, Recommended)</h2>
+    <ul>
+      <li><a href="pdfs/GNUcoreutils.pdf" target="_blank" rel="noopener">GNU Coreutils Manual</a></li>
+      <li><a href="pdfs/GNU-make.pdf" target="_blank" rel="noopener">GNU Make Manual</a></li>
+      <li><a href="pdfs/bash-ref.pdf" target="_blank" rel="noopener">Bash Reference Manual</a></li>
+      <li><a href="pdfs/File-System.pdf" target="_blank" rel="noopener">Filesystem Hierarchy Standard v3.0</a></li>
+      <li><a href="pdfs/GNU-Linux-man-pages-6.8.pdf" target="_blank" rel="noopener">Linux Man-Pages Book 6.8</a></li>
+      <li><a href="pdfs/LFS-BOOK-12.1.pdf" target="_blank" rel="noopener">Linux From Scratch 12.1</a></li>
+    </ul>
+  </section>
 </body>
 </html>
