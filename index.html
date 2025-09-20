@@ -1,66 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ArchSage – Knowledge Base</title>
+  <meta charset="utf-8" />
+  <title>ArchSage – Arch Linux Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="ArchSage: a precise Arch Linux assistant powered by Arch Wiki, GNU manuals, and curated PDFs." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #0d1117;
-      color: #e6edf3;
-      margin: 0;
-      padding: 2rem;
-      line-height: 1.6;
+    :root{
+      --bg:#0b0f16;--panel:#111827;--fg:#e5e7eb;--muted:#9ca3af;--border:#1f2937;--link:#93c5fd;--pill:#0e1624
     }
-    h1, h2 {
-      color: #58a6ff;
-    }
-    .card {
-      background: #161b22;
-      padding: 1rem 1.5rem;
-      margin: 1.5rem auto;
-      border-radius: 8px;
-      max-width: 800px;
-      border: 1px solid #30363d;
-    }
-    ul {
-      padding-left: 1.25rem;
-    }
-    a {
-      color: #58a6ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;line-height:1.6}
+    a{color:var(--link);text-decoration:underline}
+    .wrap{max-width:1000px;margin:0 auto;padding:1.25rem 1rem 4rem}
+    header{display:flex;align-items:center;gap:1rem;margin:0 0 1rem}
+    nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:.25rem 0 1rem}
+    nav a{display:inline-block;background:var(--pill);border:1px solid var(--border);padding:.4rem .6rem;border-radius:999px;text-decoration:none}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;margin:1rem 0}
+    h1{font-size:clamp(1.75rem,2.5vw,2.25rem);margin:.1rem 0}
+    h2{font-size:1.15rem;margin:0 0 .5rem}
+    h3{font-size:1rem;margin:.5rem 0 .25rem;color:var(--muted)}
+    ul{margin:.4rem 0 .8rem 1.1rem}
+    code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .glow{box-shadow:0 0 0 1px rgba(147,197,253,.08),0 8px 28px rgba(147,197,253,.06) inset;border-radius:12px}
+    .logo{width:60px;height:60px;flex:0 0 60px}
+    footer{margin-top:2rem;color:var(--muted);font-size:.95rem}
+    .grid{display:grid;gap:1rem}
+    @media(min-width:880px){.grid{grid-template-columns:1fr 1fr}}
   </style>
 </head>
 <body>
-  <h1>ArchSage Knowledge Base</h1>
+  <div class="wrap">
+    <header>
+      <div class="logo glow" aria-hidden="true"></div>
+      <div>
+        <h1>ArchSage</h1>
+        <div class="muted">Your precise Arch Linux assistant — install, configure, troubleshoot.</div>
+      </div>
+    </header>
 
-  <section id="included" class="card">
-    <h2>Included PDFs (Knowledge Base)</h2>
-    <ul>
-      <li><a href="pdfs/TLCL-24.11.pdf" target="_blank" rel="noopener">The Linux Command Line (TLCL-24.11.pdf)</a></li>
-      <li><a href="pdfs/Installation guide - ArchWiki.pdf" target="_blank" rel="noopener">Installation guide – ArchWiki.pdf</a></li>
-      <li><a href="pdfs/pacman - ArchWiki.pdf" target="_blank" rel="noopener">Pacman – ArchWiki.pdf</a></li>
-      <li><a href="pdfs/systemd - ArchWiki.pdf" target="_blank" rel="noopener">Systemd – ArchWiki.pdf</a></li>
-      <li><a href="pdfs/Network configuration - ArchWiki.pdf" target="_blank" rel="noopener">Network configuration – ArchWiki.pdf</a></li>
-      <li><a href="pdfs/Users and groups - ArchWiki.pdf" target="_blank" rel="noopener">Users and groups – ArchWiki.pdf</a></li>
-      <li><a href="pdfs/Hyprland - ArchWiki.pdf" target="_blank" rel="noopener">Hyprland – ArchWiki.pdf</a></li>
-    </ul>
-  </section>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#how">How to Use</a>
+      <a href="#examples">Example Prompts</a>
+      <a href="#included">Included PDFs</a>
+      <a href="#extras">Extra PDFs</a>
+      <a href="#actions">Actions & APIs</a>
+      <a href="#privacy">Privacy Policy</a>
+    </nav>
 
-  <section id="extras" class="card">
-    <h2>Extra PDFs (Optional, Recommended)</h2>
-    <ul>
-      <li><a href="pdfs/GNUcoreutils.pdf" target="_blank" rel="noopener">GNU Coreutils Manual</a></li>
-      <li><a href="pdfs/GNU-make.pdf" target="_blank" rel="noopener">GNU Make Manual</a></li>
-      <li><a href="pdfs/bash-ref.pdf" target="_blank" rel="noopener">Bash Reference Manual</a></li>
-      <li><a href="pdfs/File-System.pdf" target="_blank" rel="noopener">Filesystem Hierarchy Standard v3.0</a></li>
-      <li><a href="pdfs/GNU-Linux-man-pages-6.8.pdf" target="_blank" rel="noopener">Linux Man-Pages Book 6.8</a></li>
-      <li><a href="pdfs/LFS-BOOK-12.1.pdf" target="_blank" rel="noopener">Linux From Scratch 12.1</a></li>
-    </ul>
-  </section>
+    <section id="about" class="card">
+      <h2>About ArchSage</h2>
+      <p>
+        ArchSage is an Arch Linux specialist that gives step-by-step help for installs, drivers, kernels,
+        systemd, networking, and daily workflows. It’s grounded in the Arch Wiki, GNU manuals, and curated PDFs
+        so answers are practical, accurate, and reproducible.
+      </p>
+      <p class="muted">Every command is explained. Risky operations are flagged. If something’s uncertain, ArchSage shows how to verify it.</p>
+    </section>
+
+    <section id="examples" class="card">
+      <h2>Example Prompts</h2>
+      <ul>
+        <li>“Search official repos for <span class="mono">hyprland</span> and show install command.”</li>
+        <li>“Is <span class="mono">proton-ge-custom</span> in the AUR? Who maintains it and when was it updated?”</li>
+        <li>“List latest stable and LTS kernel versions and why I’d choose each.”</li>
+        <li>“Fresh install on NVMe with systemd-boot: walk me through partitioning and fstab.”</li>
+        <li>“NVIDIA 3090 tear-free Wayland on Hyprland — exact steps and configs.”</li>
+      </ul>
+    </section>
+
+    <section id="included" class="card">
+      <h2>Included PDFs (Knowledge Base)</h2>
+      <!-- Will be auto-populated from /pdfs/index.json -->
+      <ul id="includedList"></ul>
+      <p class="muted">These are populated at runtime from <code>pdfs/index.json</code>. If that file is missing, the page will fall back to the static list (none shown when JS runs).</p>
+    </section>
+
+    <section id="extras" class="card">
+      <h2>Extra PDFs (Optional, Recommended)</h2>
+      <!-- Will be auto-populated from /pdfs/index.json -->
+      <ul id="extrasList"></ul>
+    </section>
+
+    <footer>
+      <div>© <span id="year">2025</span> ArchSage — Built for the Arch community.</div>
+    </footer>
+  </div>
+
+  <script>
+    async function loadPDFs() {
+      try {
+        const res = await fetch('pdfs/index.json');
+        const files = await res.json();
+
+        const included = [
+          'TLCL-24.11.pdf',
+          'Installation guide - ArchWiki.pdf',
+          'pacman - ArchWiki.pdf',
+          'systemd - ArchWiki.pdf',
+          'Network configuration - ArchWiki.pdf',
+          'Users and groups - ArchWiki.pdf',
+          'Hyprland - ArchWiki.pdf'
+        ];
+
+        const includedList = document.getElementById('included-pdfs');
+        const extraList = document.getElementById('extra-pdfs');
+
+        files.forEach(file => {
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = 'pdfs/' + encodeURIComponent(file);
+          link.textContent = file;
+          link.target = '_blank';
+          li.appendChild(link);
+
+          if (included.includes(file)) {
+            includedList.appendChild(li);
+          } else {
+            extraList.appendChild(li);
+          }
+        });
+      } catch (err) {
+        console.error('Error loading PDFs:', err);
+      }
+    }
+
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+    loadPDFs();
+  </script>
+  <script>
+    // ===== Auto-discover PDFs from /pdfs/index.json =====
+    // Expected manifest formats (either works):
+    // 1) { "files": ["TLCL-24.11.pdf", "Installation guide - ArchWiki.pdf", ... ] }
+    // 2) { "files": [{"name": "TLCL-24.11.pdf", "title": "The Linux Command Line"}, ...] }
+    // Place it at /pdfs/index.json next to your PDFs. Static hosts can't list directories,
+    // so this JSON is the tiny bit of glue.
+
+    const INCLUDED_PREFERRED = new Set([
+      'TLCL-24.11.pdf',
+      'Installation guide - ArchWiki.pdf',
+      'pacman - ArchWiki.pdf',
+      'systemd - ArchWiki.pdf',
+      'Network configuration - ArchWiki.pdf',
+      'Users and groups - ArchWiki.pdf',
+      'Hyprland - ArchWiki.pdf'
+    ]);
+
+    function urlJoin(...parts){
+      // Join and URL-encode filename segment
+      const base = parts.slice(0, -1).join('/');
+      const file = encodeURIComponent(parts[parts.length-1]).replace(/%2F/g, '/');
+      return (base ? base + '/' : '') + file;
+    }
+
+    function liLink(name, title){
+      const a = document.createElement('a');
+      a.href = urlJoin('pdfs', name);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = title || name;
+      const li = document.createElement('li');
+      li.appendChild(a);
+      return li;
+    }
+
+    async function populateFromManifest(){
+      const includedUL = document.getElementById('includedList');
+      const extrasUL = document.getElementById('extrasList');
+      if(!includedUL || !extrasUL) return;
+
+      try{
+        const res = await fetch('pdfs/index.json', {cache: 'no-store'});
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        let entries = Array.isArray(json) ? json : (json.files || []);
+        // Normalize to [{name, title?}]
+        entries = entries.map(x => typeof x === 'string' ? {name: x} : x).filter(x => x && x.name && x.name.toLowerCase().endsWith('.pdf'));
+
+        // Sort alpha by name so it’s stable
+        entries.sort((a,b)=>a.name.localeCompare(b.name));
+
+        for(const e of entries){
+          const target = INCLUDED_PREFERRED.has(e.name) ? includedUL : extrasUL;
+          target.appendChild(liLink(e.name, e.title));
+        }
+
+        // If none landed in Included (e.g., names differ), put top useful matches there by heuristic
+        if(!includedUL.children.length){
+          const heuristics = ['Installation', 'pacman', 'systemd', 'Network', 'Users', 'Hyprland', 'TLCL'];
+          for(const e of entries){
+            if(heuristics.some(h=>e.name.includes(h))){
+              includedUL.appendChild(liLink(e.name, e.title));
+            }
+          }
+        }
+
+        // Final fallback if still empty
+        if(!includedUL.children.length && entries.length){
+          includedUL.appendChild(liLink(entries[0].name, entries[0].title));
+        }
+      }catch(err){
+        console.warn('PDF manifest load failed:', err);
+        // Leave lists empty; static HTML had no fixed items after auto mode was enabled.
+      }
+    }
+
+    populateFromManifest();
+  </script>
+
 </body>
 </html>
